@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import teamproject.springtodo.domain.Todo;
 import teamproject.springtodo.service.TodoService;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -33,7 +32,6 @@ public class TodoController {
     */
     @PostMapping
     public ResponseEntity<String>postTodo(@RequestBody Todo todo)throws Exception{
-        todo.setCreatedDateTime(LocalDateTime.now());
         todo.setIsComplete(false);
         todoService.postTodo(todo);
         return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);

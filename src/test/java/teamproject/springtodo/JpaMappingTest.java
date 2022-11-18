@@ -23,7 +23,6 @@ class JpaMappingTest {
     private Todo getSaved(){
         Todo todo = Todo.builder()
                 .content(content)
-                .createdDateTime(LocalDateTime.now())
                 .build();
         return testEntityManager.persist(todo);
     }
@@ -35,7 +34,6 @@ class JpaMappingTest {
         System.out.println(todo.getId());
         System.out.println(todo.getContent());
         System.out.println(todo.getIsComplete());
-        System.out.println(todo.getCreatedDateTime());
         System.out.println("===================");
 
         Long id = todo.getId();
@@ -53,7 +51,6 @@ class JpaMappingTest {
         Todo todo = Todo.builder()
                     .content("내용1")
                     .isComplete(true)
-                    .createdDateTime(LocalDateTime.now())
                     .build();
         //WHEN
         Todo savedTodo = todoRepository.save(todo);
@@ -61,7 +58,6 @@ class JpaMappingTest {
         System.out.println(savedTodo.getId());
         System.out.println(savedTodo.getContent());
         System.out.println(savedTodo.getIsComplete());
-        System.out.println(savedTodo.getCreatedDateTime());
         System.out.println("==================");
 
         //THEN
@@ -78,7 +74,6 @@ class JpaMappingTest {
         System.out.println(todo.getId());
         System.out.println(todo.getContent());
         System.out.println(todo.getIsComplete());
-        System.out.println(todo.getCreatedDateTime());
         System.out.println("==================");
         Long id = todo.getId();
 

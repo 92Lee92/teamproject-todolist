@@ -7,8 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Date;
+
+
 
 @Getter
 @Setter
@@ -27,22 +27,19 @@ public class Todo implements Serializable {
     @Column
     private String content;
 
-    @Column
-    private LocalDateTime createdDateTime;
 
     @Column
     private Boolean isComplete;
 
     @Builder
-    public Todo(Long id, String content, LocalDateTime createdDateTime, Boolean isComplete){
+    public Todo(Long id, String content, Boolean isComplete){
         this.id = id;
         this.content= content;
-        this.createdDateTime = createdDateTime;
         this.isComplete = isComplete;
     }
 
     @Override
     public String toString(){
-        return "ToDo [id = " +id + "content = " +content +"createdDateTime = " +createdDateTime +"isComplete = " +isComplete + "]";
+        return "ToDo [id = " +id + "content = " +content +"isComplete = " +isComplete + "]";
     }
 }
