@@ -41,9 +41,10 @@ public class TodoController {
     * 수정
     */
     @PutMapping("/{id}")
-    public ResponseEntity<String> putTodo(@RequestParam("id") Long id) throws Exception{
+    public ResponseEntity<String> putTodo(@PathVariable("id") Long id) throws Exception{
         Todo todo = todoService.findTodoById(id);
         Boolean IsComplete = todo.getIsComplete()?false:true;
+        todo.setIsComplete(IsComplete);
         todoService.postTodo(todo);
         return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 
@@ -52,7 +53,7 @@ public class TodoController {
     * 삭제
     */
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTodo(@RequestParam("id") Long id) throws Exception{
+    public ResponseEntity<String> deleteTodo(@PathVariable("id") Long id) throws Exception{
         todoService.deleteTodo(id);
         return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 
